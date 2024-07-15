@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     paddingHorizontal: 10,
+    fontWeight: 'bold',
     color: '#000',
   },
   forgotPassword: {
@@ -72,13 +73,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   forgotPasswordText: {
-    color: '#259461',
+    color:'#7C7C7C',
+    fontWeight: 'bold',
     fontSize: 14,
   },
   button: {
     backgroundColor: '#259461',
-    borderRadius: 25,
-    paddingVertical: 20,
+    borderRadius: 40,
+    paddingVertical: 22,
     alignItems: 'center',
     marginBottom: 20,
   },
@@ -92,11 +94,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   registerText: {
-    color: '#000',
+    fontWeight: 'bold',
+    color:'#7C7C7C',
     fontSize: 14,
   },
   registerLink: {
     color: '#259461',
+    fontWeight: 'bold',
     fontSize: 14,
     marginLeft: 5,
   },
