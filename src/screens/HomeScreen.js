@@ -26,7 +26,9 @@ const HomeScreen = () => {
         if (id === '2') {
             navigation.navigate('SearchQuestions');
         }
-        
+        if (id === '4') {
+            navigation.navigate('History');
+        }
     };
 
     return (

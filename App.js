@@ -9,6 +9,7 @@ import SelectRankScreen from './src/screens/SelectRankScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import SearchQuestionsScreen from './src/screens/SearchQuestionsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
+import HistoryScreen from './src/screens/HistoryScreen';
 
 const Stack = createStackNavigator();
 
@@ -56,6 +57,11 @@ const App = () => {
           name="Perfil de usuario"
           component={ProfileScreen}
           options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="History"
+          component={HistoryScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
