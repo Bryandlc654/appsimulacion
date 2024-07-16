@@ -33,6 +33,9 @@ const HomeScreen = () => {
         if (id === '5') {
             navigation.navigate('Lecturas');
         }
+        if (id === '3') {
+            navigation.navigate('ExamSimulator');
+        }
     };
 
     return (
