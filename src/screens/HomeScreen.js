@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import LecturasScreen from './LecturasScreen';
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -28,6 +29,9 @@ const HomeScreen = () => {
         }
         if (id === '4') {
             navigation.navigate('History');
+        }
+        if (id === '5') {
+            navigation.navigate('Lecturas');
         }
     };
 

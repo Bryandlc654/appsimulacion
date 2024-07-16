@@ -9,7 +9,7 @@ const HistoryScreen = () => {
     const historyData = [
         { id: '1', evaluation: 'Evaluación 1', score: '100 pts', questions: '100' },
         { id: '2', evaluation: 'Evaluación 2', score: '85 pts', questions: '90' },
-        { id: '3', evaluation: 'Evaluación 3', score: '75 pts', questions: '80' },
+        { id: '3', evaluation: 'Evaluación 3', score: '78 pts', questions: '80' },
     ];
 
     return (
