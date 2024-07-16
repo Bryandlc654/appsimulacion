@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
 import { useNavigation } from '@react-navigation/native';
+import CheckBox from 'react-native-check-box';
 
 const SelectRankScreen = () => {
   const navigation = useNavigation();
@@ -31,9 +31,9 @@ const SelectRankScreen = () => {
         {ranks.map((rank) => (
           <View key={rank.key} style={styles.rankOption}>
             <CheckBox
-              value={selectedRank === rank.key}
-              onValueChange={() => setSelectedRank(rank.key)}
-              tintColors={{ true: '#259461', false: '#1C1D32' }}
+              isChecked={selectedRank === rank.key}
+              onClick={() => setSelectedRank(rank.key)}
+              checkBoxColor={selectedRank === rank.key ? '#259461' : '#1C1D32'}
               style={styles.checkbox}
             />
             <Text style={styles.rankLabel}>{rank.label}</Text>
@@ -46,7 +46,6 @@ const SelectRankScreen = () => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
