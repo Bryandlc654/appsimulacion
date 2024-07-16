@@ -21,7 +21,7 @@ const ProfileScreen = () => {
       <Text style={styles.label}>Nombre</Text>
       <TextInput
         style={styles.input}
-        placeholder=""
+        placeholder="Ejm: Juan Loza"
         placeholderTextColor="#C1C1C1"
         secureTextEntry
       />
