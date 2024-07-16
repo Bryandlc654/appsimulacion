@@ -12,6 +12,9 @@ const LoginScreen = () => {
     const handleRegister = () => {
         navigation.navigate('Register'); // Redirigir a la pantalla de "Regístrate aquí"
     };
+    const handleHome = () => {
+        navigation.navigate('Home'); // Redirigir a la pantalla de "Regístrate aquí"
+    };
 
     return (
         <View style={styles.container}>
@@ -33,7 +36,7 @@ const LoginScreen = () => {
             <TouchableOpacity style={styles.forgotPassword} onPress={handleForgotPassword}>
                 <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={handleHome}>
                 <Text style={styles.buttonText}>Ingresar</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.registerContainer} onPress={handleRegister}>
