@@ -13,7 +13,7 @@ const ProfileScreen = () => {
     <View style={styles.container}>
       <TouchableOpacity style={styles.profileImageContainer}>
         <Image
-          source={require("../../assets/Ellipse 4.png")}
+          source={require("../../assets/user_photo.png")}
           style={styles.profileImage}
         />
       </TouchableOpacity>
