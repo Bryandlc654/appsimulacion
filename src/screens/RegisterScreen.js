@@ -8,6 +8,9 @@ const RegisterScreen = () => {
   const handleLoginLink = () => {
     navigation.navigate('Login'); // Redirigir a la pantalla de Login
   };
+  const handleSelectRankLink = () => {
+    navigation.navigate('SelectRank'); 
+  };
 
   return (
     <View style={styles.container}>
@@ -38,11 +41,12 @@ const RegisterScreen = () => {
         placeholderTextColor="#C1C1C1"
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Ingresar</Text>
+      <TouchableOpacity style={styles.button} onPress={handleSelectRankLink}>
+        <Text style={styles.buttonText}>Siguiente</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.loginLink} onPress={handleLoginLink}>
-        <Text style={styles.loginLinkText}>¿Ya tienes una cuenta? Ingresar aquí</Text>
+      <TouchableOpacity style={styles.registerContainer} onPress={handleLoginLink}>
+        <Text style={styles.registerText}>¿Ya tienes una cuenta?</Text>
+        <Text style={styles.registerLink}>Ingresa aquí.</Text>
       </TouchableOpacity>
     </View>
   );
@@ -71,8 +75,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000',
     marginBottom: 10,
-},
-input: {
+  },
+  input: {
     height: 58,
     borderColor: '#259461',
     borderWidth: 1,
@@ -81,11 +85,11 @@ input: {
     paddingHorizontal: 10,
     fontWeight: 'bold',
     color: '#000',
-},
+  },
   button: {
     backgroundColor: '#259461',
-    borderRadius: 25,
-    paddingVertical: 10,
+    borderRadius: 40,
+    paddingVertical: 22,
     alignItems: 'center',
     marginBottom: 20,
   },
@@ -94,12 +98,20 @@ input: {
     fontSize: 16,
     fontWeight: 'bold',
   },
-  loginLink: {
-    alignSelf: 'center',
+  registerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
-  loginLinkText: {
-    color: '#259461',
+  registerText: {
+    fontWeight: 'bold',
+    color: '#7C7C7C',
     fontSize: 14,
+  },
+  registerLink: {
+    color: '#259461',
+    fontWeight: 'bold',
+    fontSize: 14,
+    marginLeft: 5,
   },
 });
 
