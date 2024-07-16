@@ -11,7 +11,8 @@ import SearchQuestionsScreen from "./src/screens/SearchQuestionsScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import HistoryScreen from "./src/screens/HistoryScreen";
 import AboutScreen from "./src/screens/AboutScreen";
-
+import LecturasScreen from './src/screens/LecturasScreen';
+import ExamSimulationScreen from './src/screens/ExamSimulationScreen';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -67,6 +68,15 @@ const App = () => {
           name="Acerca de"
           component={AboutScreen}
           options={{ headerShown: true }}
+        /><Stack.Screen
+          name="Lecturas"
+          component={LecturasScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ExamSimulator"
+          component={ExamSimulationScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
