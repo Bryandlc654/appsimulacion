@@ -25,7 +25,7 @@ const ProfileScreen = () => {
         placeholderTextColor="#C1C1C1"
         secureTextEntry
       />
-      <Text style={styles.label}>Apellido</Text>
+      <Text style={styles.label}>Apellidos</Text>
       <TextInput
         style={styles.input}
         placeholder=""
