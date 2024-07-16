@@ -47,13 +47,20 @@ const HomeScreen = () => {
   ];
 
   const handleButtonPress = (id) => {
-    if (id === "2") {
-      navigation.navigate("SearchQuestions");
+    if (id === '2') {
+        navigation.navigate('SearchQuestions');
     }
-    if (id === "4") {
-      navigation.navigate("History");
+    if (id === '4') {
+        navigation.navigate('History');
     }
-  };
+    if (id === '5') {
+        navigation.navigate('Lecturas');
+    }
+    if (id === '3') {
+        navigation.navigate('ExamSimulator');
+    }
+};
+
   const handlePremium = () => {
     const phoneNumber = "962469836";
     const message = `Saludos estoy interesa en la versión premium `;
