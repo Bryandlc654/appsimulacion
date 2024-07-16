@@ -9,6 +9,10 @@ const HomeScreen = () => {
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
+    
+    const handleProfile = () => {
+        navigation.navigate('Perfil de usuario'); 
+    };
 
     const buttons = [
         { id: '1', label: 'Banco de Preguntas', icon: require('../../assets/banco_preguntas.png') },
@@ -37,7 +41,7 @@ const HomeScreen = () => {
                 </TouchableOpacity>
                 {dropdownVisible && (
                     <View style={styles.dropdown}>
-                        <TouchableOpacity style={styles.dropdownItem}>
+                        <TouchableOpacity style={styles.dropdownItem} onPress={handleProfile}>
                             <Text style={styles.dropdownText}>Mi Perfil</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.dropdownItem}>

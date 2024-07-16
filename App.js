@@ -8,6 +8,7 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import SelectRankScreen from './src/screens/SelectRankScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import SearchQuestionsScreen from './src/screens/SearchQuestionsScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
 
 const Stack = createStackNavigator();
 
@@ -46,9 +47,15 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
+
           name="SearchQuestions"
           component={SearchQuestionsScreen}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Perfil de usuario"
+          component={ProfileScreen}
+          options={{ headerShown: true }}
         />
       </Stack.Navigator>
     </NavigationContainer>
