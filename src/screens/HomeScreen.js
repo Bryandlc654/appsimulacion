@@ -18,6 +18,13 @@ const HomeScreen = () => {
         { id: '5', label: 'Lecturas', icon: require('../../assets/lecturas.png') },
     ];
 
+    const handleButtonPress = (id) => {
+        if (id === '2') {
+            navigation.navigate('SearchQuestions');
+        }
+        
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -53,8 +60,8 @@ const HomeScreen = () => {
                 <FlatList
                     data={buttons}
                     renderItem={({ item }) => (
-                        <View style={styles.buttonWrapper}>
-                            <TouchableOpacity style={styles.button}>
+                        <View style={styles.buttonWrapper} >
+                            <TouchableOpacity style={styles.button} onPress={() => handleButtonPress(item.id)}>
                                 <Image source={item.icon} style={styles.buttonIcon} />
                                 <Text style={styles.buttonText}>{item.label}</Text>
                             </TouchableOpacity>

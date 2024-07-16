@@ -7,6 +7,7 @@ import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import SelectRankScreen from './src/screens/SelectRankScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import SearchQuestionsScreen from './src/screens/SearchQuestionsScreen';
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,11 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SearchQuestions"
+          component={SearchQuestionsScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
