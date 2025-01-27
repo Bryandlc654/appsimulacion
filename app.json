@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "app_simulator",
-    "slug": "app_simulator",
+    "slug": "pnp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#7cdaf9"
     },
     "ios": {
       "supportsTablet": true
@@ -17,7 +17,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#7cdaf9"
       },
       "package": "com.bdlc654.app_simulator"
     },
@@ -26,8 +26,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "335d9f15-6d9d-44f9-81b3-7528e9f19e7e"
+        "projectId": "02704023-b38c-4a62-83ae-7c092f65b44b"
       }
-    }
+    },
+    "owner": "fflorescuba"
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,10 +6,27 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Linking,
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+
 const ForgotPasswordScreen = () => {
+  const [cip, setCip] = useState('');
   const navigation = useNavigation();
+
+  const handleSend = () => {
+    if (cip.trim()) {
+      const phoneNumber = "962469836";
+      const message = `Saludos, he olvidado mi contraseña, solicito un cambio de contraseña. Mi CIP es ${cip}.`;
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+      Linking.openURL(url).catch((err) =>
+        console.error("Error al abrir WhatsApp:", err)
+      );
+    } else {
+      alert("Por favor, ingrese su CIP.");
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -21,17 +38,20 @@ const ForgotPasswordScreen = () => {
         style={styles.input}
         placeholder="123456"
         placeholderTextColor="#C1C1C1"
+        value={cip}
+        onChangeText={setCip}
+        keyboardType="numeric"
       />
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleSend}>
         <Text style={styles.buttonText}>Enviar</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonRecover}
-           onPress={() => navigation.goBack()}>
+      <TouchableOpacity style={styles.buttonRecover} onPress={() => navigation.goBack()}>
         <Text style={styles.buttonTextRecover}>Regresar</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -59,7 +79,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 58,
-    borderColor: "#259461",
+    borderColor: "#7cdaf9",
     borderWidth: 1,
     borderRadius: 10,
     marginBottom: 20,
@@ -68,7 +88,7 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   button: {
-    backgroundColor: "#259461",
+    backgroundColor: "#7cdaf9",
     borderRadius: 40,
     paddingVertical: 22,
     alignItems: "center",
@@ -80,12 +100,11 @@ const styles = StyleSheet.create({
     paddingVertical: 22,
     alignItems: "center",
     marginBottom: 20,
-    borderColor: "#259461",
-    borderWidth:2, 
-  }
-  ,
+    borderColor: "#7cdaf9",
+    borderWidth: 2,
+  },
   buttonTextRecover: {
-    color: "#259461",
+    color: "#7cdaf9",
     fontSize: 16,
     fontWeight: "bold",
   },
@@ -95,4 +114,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   }
 });
+
 export default ForgotPasswordScreen;

@@ -1,52 +1,71 @@
-import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { login } from '../Auth/Login/Login';
+import Loading from './Loading/Loading';
 
 const LoginScreen = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
+  const [cip, setCip] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const handleForgotPassword = () => {
+    navigation.navigate('ForgotPassword'); // Redirigir a la pantalla de "Olvidaste tu contraseña"
+  };
 
-    const handleForgotPassword = () => {
-        navigation.navigate('ForgotPassword'); // Redirigir a la pantalla de "Olvidaste tu contraseña"
-    };
+  const handleRegister = () => {
+    navigation.navigate('Register'); // Redirigir a la pantalla de "Regístrate aquí"
+  };
 
-    const handleRegister = () => {
-        navigation.navigate('Register'); // Redirigir a la pantalla de "Regístrate aquí"
-    };
-    const handleHome = () => {
-        navigation.navigate('Home'); // Redirigir a la pantalla de "Regístrate aquí"
-    };
+  const handleLogin = async () => {
+    setIsLoading(true);
+    const result = await login(cip, password, navigation);
+    if (!result.success) {
+      Alert.alert('Error en iniciar sesion', result.message);
+    }
+    setIsLoading(false);
+  };
 
-    return (
-        <View style={styles.container}>
-            <Image source={require('../../assets/icon.png')} style={styles.logo} />
-            <Text style={styles.welcome}>Bienvenido</Text>
-            <Text style={styles.label}>CIP</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="123456"
-                placeholderTextColor="#C1C1C1"
-            />
-            <Text style={styles.label}>Contraseña</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="*******"
-                placeholderTextColor="#C1C1C1"
-                secureTextEntry
-            />
-            <TouchableOpacity style={styles.forgotPassword} onPress={handleForgotPassword}>
-                <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={handleHome}>
-                <Text style={styles.buttonText}>Ingresar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.registerContainer} onPress={handleRegister}>
-                <Text style={styles.registerText}>¿Aún no tienes una cuenta?</Text>
-                <Text style={styles.registerLink}>Regístrate aquí.</Text>
-            </TouchableOpacity>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+        {isLoading ? (
+            <Loading/>
+    ) : (
+        <>
+      <Image source={require('../../assets/icon.png')} style={styles.logo} />
+      <Text style={styles.welcome}>Bienvenido</Text>
+      <Text style={styles.label}>CIP</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="123456"
+        placeholderTextColor="#C1C1C1"
+        value={cip}
+        onChangeText={setCip}
+      />
+      <Text style={styles.label}>Contraseña</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="*******"
+        placeholderTextColor="#C1C1C1"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
+      <TouchableOpacity style={styles.forgotPassword} onPress={handleForgotPassword}>
+        <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={styles.buttonText}>Ingresar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.registerContainer} onPress={handleRegister}>
+        <Text style={styles.registerText}>¿Aún no tienes una cuenta?</Text>
+        <Text style={styles.registerLink}>Regístrate aquí.</Text>
+      </TouchableOpacity>
+      </>
+      )}
+    </View>
+  );
 };
-
 
 const styles = StyleSheet.create({
     container: {
@@ -54,6 +73,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         paddingHorizontal: 20,
         justifyContent: 'center',
+        position:"relative"
     },
     logo: {
         width: 100,
@@ -75,7 +95,7 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 58,
-        borderColor: '#259461',
+        borderColor: '#7cdaf9',
         borderWidth: 1,
         borderRadius: 10,
         marginBottom: 20,
@@ -93,7 +113,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     button: {
-        backgroundColor: '#259461',
+        backgroundColor: '#7cdaf9',
         borderRadius: 40,
         paddingVertical: 22,
         alignItems: 'center',
@@ -114,7 +134,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     registerLink: {
-        color: '#259461',
+        color: '#7cdaf9',
         fontWeight: 'bold',
         fontSize: 14,
         marginLeft: 5,

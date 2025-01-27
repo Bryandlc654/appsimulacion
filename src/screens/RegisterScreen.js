@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const RegisterScreen = () => {
   const navigation = useNavigation();
+  const [cip, setCip] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLoginLink = () => {
     navigation.navigate('Login'); // Redirigir a la pantalla de Login
   };
-  const handleSelectRankLink = () => {
-    navigation.navigate('SelectRank'); 
+   const handleSelectRankLink = () => {
+    if (!cip || !firstName || !lastName || !password) {
+      alert('Por favor complete todos los campos');
+      return;
+    }
+
+    navigation.navigate('SelectRank', {
+      cip,
+      firstName,
+      lastName,
+      password,
+    });
   };
 
   return (
@@ -21,18 +35,24 @@ const RegisterScreen = () => {
         style={styles.input}
         placeholder="Ingrese su CIP"
         placeholderTextColor="#C1C1C1"
+        value={cip}
+        onChangeText={setCip}
       />
       <Text style={styles.label}>Nombres</Text>
       <TextInput
         style={styles.input}
         placeholder="Ingrese su nombre"
         placeholderTextColor="#C1C1C1"
+        value={firstName}
+        onChangeText={setFirstName}
       />
       <Text style={styles.label}>Apellidos</Text>
       <TextInput
         style={styles.input}
         placeholder="Ingrese sus apellidos"
         placeholderTextColor="#C1C1C1"
+        value={lastName}
+        onChangeText={setLastName}
       />
       <Text style={styles.label}>Contraseña</Text>
       <TextInput
@@ -40,6 +60,8 @@ const RegisterScreen = () => {
         placeholder="Ingrese su contraseña"
         placeholderTextColor="#C1C1C1"
         secureTextEntry
+        value={password}
+        onChangeText={setPassword}
       />
       <TouchableOpacity style={styles.button} onPress={handleSelectRankLink}>
         <Text style={styles.buttonText}>Siguiente</Text>
@@ -78,7 +100,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 58,
-    borderColor: '#259461',
+    borderColor: '#7cdaf9',
     borderWidth: 1,
     borderRadius: 10,
     marginBottom: 20,
@@ -87,7 +109,7 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   button: {
-    backgroundColor: '#259461',
+    backgroundColor: '#7cdaf9',
     borderRadius: 40,
     paddingVertical: 22,
     alignItems: 'center',
@@ -108,7 +130,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   registerLink: {
-    color: '#259461',
+    color: '#7cdaf9',
     fontWeight: 'bold',
     fontSize: 14,
     marginLeft: 5,
